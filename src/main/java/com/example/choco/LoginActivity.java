@@ -27,13 +27,11 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.acitvity_login);
-
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        getSupportActionBar().hide();
+        setContentView(R.layout.acitvity_login);
 
-        final EditText adresse = findViewById(R.id.editTextEmailRegis);
+        final EditText adresse = findViewById(R.id.editTextName);
         final EditText pass = findViewById(R.id.editTextPassword);
         final Button login = findViewById(R.id.login);
 
@@ -52,7 +50,7 @@ public class LoginActivity extends AppCompatActivity {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
                                 Toast.makeText(LoginActivity.this, "Logged in successfully", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                                startActivity(new Intent(getApplicationContext(), HomeActivity.class));
 
                             } else {
                                 Toast.makeText(LoginActivity.this, "Error ! " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
@@ -62,6 +60,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
+        openAdminLoginActivity();
         openForgotPassActivity();
         openSignupActivity();
 
@@ -88,6 +87,16 @@ public class LoginActivity extends AppCompatActivity {
                 //Starting a new Intent
                 Intent nextScreen = new Intent(LoginActivity.this, MainActivity.class);
 
+                startActivity(nextScreen);
+            }
+        });
+    }
+    public void openAdminLoginActivity(){
+        TextView admin = findViewById(R.id.textAdmin);
+        admin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent nextScreen = new Intent(LoginActivity.this,AdminLogin.class);
                 startActivity(nextScreen);
             }
         });

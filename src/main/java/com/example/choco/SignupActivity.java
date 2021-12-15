@@ -8,6 +8,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -22,21 +23,22 @@ import com.google.firebase.database.ValueEventListener;
 public class SignupActivity extends AppCompatActivity {
     FirebaseAuth fAuth = FirebaseAuth.getInstance();
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://chocoverse-20dd8-default-rtdb.firebaseio.com/");
-    static int  i =1 ;
+    static int  i =0 ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_signup);
-
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        getSupportActionBar().hide();
+        setContentView(R.layout.activity_signup);
+
+
+
 
         final EditText username = findViewById(R.id.editTextFullName);
-        final EditText email = findViewById(R.id.editTextEmailRegis);
+        final EditText email = findViewById(R.id.editTextName);
         final EditText address = findViewById(R.id.editTextAddress);
         final EditText phone = findViewById(R.id.editTextPhone);
-        final EditText pass = findViewById(R.id.editTextPasswordRegis);
+        final EditText pass = findViewById(R.id.editTextTextPassword);
         final Button register = findViewById(R.id.ButtonRegister);
 
         register.setOnClickListener(new View.OnClickListener() {
@@ -70,7 +72,7 @@ public class SignupActivity extends AppCompatActivity {
                                         Toast.makeText(SignupActivity.this, "User Registered successfully", Toast.LENGTH_SHORT).show();
                                         finish();
                                     }
-                                    i++;
+
                                 }
 
 
@@ -81,6 +83,8 @@ public class SignupActivity extends AppCompatActivity {
                             });
                         }
                     });
+                    i++;
+
 
 
                 }

@@ -10,6 +10,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CHOCO">
         <activity
+            android:name=".HomeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AdminActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AdminLogin"
+            android:exported="false" />
+        <activity
+            android:name=".VerifOTP"
+            android:exported="false" />
+        <activity
             android:name=".ForgotPassPhoneActivity"
             android:exported="false" />
         <activity
@@ -20,17 +32,17 @@
             android:exported="false" />
         <activity
             android:name=".LoginActivity"
-            android:exported="true"
-            android:label="@string/title_activity_login">
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".MainActivity"
-            android:exported="true" />
+
     </application>
 
 </manifest>
